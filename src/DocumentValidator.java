@@ -8,11 +8,11 @@ public class DocumentValidator {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите путь к файлу: ");
         String path = scanner.nextLine();
-        try {
+        try (FileWriter fileWriterValid = new FileWriter("Valid.txt");
+             FileWriter fileWriterInvalid = new FileWriter("Invalid.txt");){
             FileReader fileReader = new FileReader(path);
 
-            FileWriter fileWriterValid = new FileWriter("Valid.txt");
-            FileWriter fileWriterInvalid = new FileWriter("Invalid.txt");
+
 
             Scanner scanner1 = new Scanner(fileReader);
             while (scanner1.hasNextLine()){
@@ -23,10 +23,10 @@ public class DocumentValidator {
                     fileWriterInvalid.write(line + " " + reason(line) + "\n");
                 }
             }
-            fileWriterValid.close();
-            fileWriterInvalid.close();
-            fileReader.close();
-            scanner1.close();
+//            fileWriterValid.close();
+//            fileWriterInvalid.close();
+//            fileReader.close();
+//            scanner1.close();
 
         } catch (IOException e){
             System.out.println("Проблема с файлом: "+ e.getMessage());
