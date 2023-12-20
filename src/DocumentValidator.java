@@ -8,9 +8,10 @@ public class DocumentValidator {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите путь к файлу: ");
         String path = scanner.nextLine();
-        try (FileWriter fileWriterValid = new FileWriter("Valid.txt");
+        try (FileReader fileReader = new FileReader(path);
+                FileWriter fileWriterValid = new FileWriter("Valid.txt");
              FileWriter fileWriterInvalid = new FileWriter("Invalid.txt");){
-            FileReader fileReader = new FileReader(path);
+
 
 
 
